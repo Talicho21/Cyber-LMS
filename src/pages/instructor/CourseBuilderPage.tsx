@@ -81,7 +81,7 @@ export function CourseBuilderPage() {
               Free preview
             </label>
             {modules.length > 1 && (
-              <button type="button" onClick={() => removeModule(i)} className="text-xs text-status-danger">
+              <button type="button" onClick={() => removeModule(i)} className="text-xs text-danger">
                 Remove
               </button>
             )}

@@ -7,9 +7,9 @@ import type { CourseStatus } from "../../types";
 const CURRENT_INSTRUCTOR_ID = "instructor-1";
 
 const statusStyles: Record<CourseStatus, string> = {
-  draft: "bg-surface-canvas text-surface-muted",
-  pending_review: "bg-status-warningBg text-status-warning",
-  published: "bg-lemon-50 text-lemon-900",
+  draft: "border border-navy-200 bg-surface-canvas text-surface-muted",
+  pending_review: "border border-warning bg-white text-warning",
+  published: "border border-lemon-500 bg-lemon-50 text-lemon-700",
 };
 
 const statusLabels: Record<CourseStatus, string> = {

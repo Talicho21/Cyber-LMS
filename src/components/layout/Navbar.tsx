@@ -1,3 +1,5 @@
+import { useAuthStore } from "../../store/authStore";
+
 interface NavbarProps {
   title: string;
   subtitle?: string;
@@ -5,14 +7,43 @@ interface NavbarProps {
 }
 
 export function Navbar({ title, subtitle, userInitials }: NavbarProps) {
+  const { role, setRole } = useAuthStore();
+
   return (
     <div className="flex items-center justify-between border-b border-surface-divider bg-surface-card px-6 py-4">
-      <div>
-        <div className="text-lg font-medium text-navy-900">{title}</div>
-        {subtitle && <div className="text-sm text-surface-muted">{subtitle}</div>}
+      <div className="space-y-1">
+        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-lemon-700">
+          {role === "student" ? "Student workspace" : role === "instructor" ? "Instructor workspace" : "Workspace"}
+        </div>
+        <div className="text-xl font-semibold leading-tight text-navy-900">{title}</div>
+        {subtitle && <div className="max-w-2xl text-sm text-surface-muted">{subtitle}</div>}
       </div>
-      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-lemon-50 text-sm font-medium text-lemon-900">
-        {userInitials}
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setRole("student")}
+          className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+            role === "student"
+              ? "border-lemon-500 bg-lemon-500 text-navy-900"
+              : "border-navy-200 bg-surface-card text-surface-muted hover:bg-lemon-50"
+          }`}
+        >
+          Students
+        </button>
+        <button
+          type="button"
+          onClick={() => setRole("instructor")}
+          className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+            role === "instructor"
+              ? "border-lemon-500 bg-lemon-500 text-navy-900"
+              : "border-navy-200 bg-surface-card text-surface-muted hover:bg-lemon-50"
+          }`}
+        >
+          Instructors
+        </button>
+        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-lemon-500 bg-lemon-50 text-sm font-medium text-lemon-700">
+          {userInitials}
+        </div>
       </div>
     </div>
   );

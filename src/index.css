@@ -25,5 +25,9 @@
   --color-status-dangerBg: #FFEBEE;
   --color-status-danger: #E53935;
 
+  --color-info: #1976D2;
+  --color-warning: #FFC107;
+  --color-danger: #E53935;
+
   --font-sans: Arial, Helvetica, sans-serif;
 }

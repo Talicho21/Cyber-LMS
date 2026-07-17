@@ -1,35 +1,77 @@
-import { useCourses } from "../../lib/queries/useCourses";
-import { useEnrollments } from "../../lib/queries/useEnrollments";
-import { CourseCard } from "../../components/shared/CourseCard";
+interface LibraryCourse {
+  id: string;
+  title: string;
+  category: string;
+  instructor: string;
+  lessons: number;
+  duration: string;
+  thumbnailLabel: string;
+}
 
-const CURRENT_USER_ID = "user-1";
+const libraryCourses: LibraryCourse[] = [
+  {
+    id: "l1",
+    title: "Advanced React Patterns",
+    category: "Web Development",
+    instructor: "K. Girma",
+    lessons: 22,
+    duration: "9h 30m",
+    thumbnailLabel: "RX",
+  },
+  {
+    id: "l2",
+    title: "Statistics for Everyone",
+    category: "Mathematics",
+    instructor: "Dr. A. Bekele",
+    lessons: 16,
+    duration: "6h 10m",
+    thumbnailLabel: "ST",
+  },
+  {
+    id: "l3",
+    title: "Public Speaking Essentials",
+    category: "Soft Skills",
+    instructor: "M. Alemu",
+    lessons: 8,
+    duration: "3h 45m",
+    thumbnailLabel: "PS",
+  },
+  {
+    id: "l4",
+    title: "Database Design Basics",
+    category: "Web Development",
+    instructor: "T. Wolde",
+    lessons: 14,
+    duration: "5h 20m",
+    thumbnailLabel: "DB",
+  },
+];
 
 export function CourseBrowsePage() {
-  const { data: courses, isLoading: coursesLoading } = useCourses();
-  const { data: enrollments, isLoading: enrollmentsLoading } = useEnrollments(CURRENT_USER_ID);
-
-  if (coursesLoading || enrollmentsLoading) {
-    return <div className="text-sm text-surface-muted">Loading courses…</div>;
-  }
-
-  const enrolledCourseIds = new Set(enrollments?.map((e) => e.courseId));
-
-  function handleEnroll(courseId: string) {
-    // Mocked — not persisted yet. Once the backend exists, this becomes a
-    // useMutation call to POST /enrollments, then invalidates the
-    // ["enrollments", userId] query so the dashboard picks it up.
-    alert(`Enrolled in course ${courseId} (mocked — not saved yet)`);
-  }
-
   return (
-    <div className="grid grid-cols-3 gap-3">
-      {courses?.map((course) => (
-        <CourseCard
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {libraryCourses.map((course) => (
+        <div
           key={course.id}
-          course={course}
-          isEnrolled={enrolledCourseIds.has(course.id)}
-          onEnroll={handleEnroll}
-        />
+          className="flex flex-col overflow-hidden rounded-xl border border-navy-200 bg-lemon-50 transition-colors hover:bg-surface-card"
+        >
+          <div className="flex h-[90px] items-center justify-center bg-navy-900 text-xl font-bold tracking-wide text-lemon-500">
+            {course.thumbnailLabel}
+          </div>
+          <div className="flex flex-1 flex-col px-4 pb-5 pt-4">
+            <span className="mb-2 inline-block w-fit rounded-full bg-lemon-50 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-lemon-700">
+              {course.category}
+            </span>
+            <h3 className="mb-1 text-base font-bold text-navy-900">{course.title}</h3>
+            <p className="mb-1 text-[13px] text-navy-500">{course.instructor}</p>
+            <p className="mb-3 text-[13px] text-navy-500">
+              {course.lessons} lessons · {course.duration}
+            </p>
+            <button className="mt-auto w-full rounded-lg border-[1.5px] border-lemon-500 bg-white py-2.5 text-sm font-bold text-lemon-700 transition-colors hover:bg-lemon-50 active:bg-lemon-700 active:text-white">
+              Enroll Now
+            </button>
+          </div>
+        </div>
       ))}
     </div>
   );

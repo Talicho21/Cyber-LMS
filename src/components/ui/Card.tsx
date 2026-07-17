@@ -8,7 +8,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const variantClasses: Record<CardVariant, string> = {
   default: "bg-surface-card border border-navy-200",
-  highlight: "bg-lemon-50 text-lemon-900",
+  highlight: "bg-lemon-50 text-lemon-700",
   secondary: "bg-navy-50 text-navy-700",
 };
 
