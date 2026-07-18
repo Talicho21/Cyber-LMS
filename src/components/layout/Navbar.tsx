@@ -12,11 +12,19 @@ export function Navbar({ title, subtitle, userInitials }: NavbarProps) {
   return (
     <div className="flex items-center justify-between border-b border-surface-divider bg-surface-card px-6 py-4">
       <div className="space-y-1">
-        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-lemon-700">
-          {role === "student" ? "Student workspace" : role === "instructor" ? "Instructor workspace" : "Workspace"}
+        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-navy-700">
+          {role === "student"
+            ? "Student workspace"
+            : role === "instructor"
+              ? "Instructor workspace"
+              : "Workspace"}
         </div>
-        <div className="text-xl font-semibold leading-tight text-navy-900">{title}</div>
-        {subtitle && <div className="max-w-2xl text-sm text-surface-muted">{subtitle}</div>}
+        <div className="text-xl font-semibold leading-tight text-navy-900">
+          {title}
+        </div>
+        {subtitle && (
+          <div className="max-w-2xl text-sm text-surface-muted">{subtitle}</div>
+        )}
       </div>
       <div className="flex items-center gap-2">
         <button
@@ -41,7 +49,7 @@ export function Navbar({ title, subtitle, userInitials }: NavbarProps) {
         >
           Instructors
         </button>
-        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-lemon-500 bg-lemon-50 text-sm font-medium text-lemon-700">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-lemon-500 bg-lemon-50 text-sm font-medium text-navy-700">
           {userInitials}
         </div>
       </div>
