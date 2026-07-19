@@ -1,4 +1,5 @@
 import { useAuthStore } from "../../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   title: string;
@@ -7,7 +8,13 @@ interface NavbarProps {
 }
 
 export function Navbar({ title, subtitle, userInitials }: NavbarProps) {
-  const { role, setRole } = useAuthStore();
+  const { role, setRole, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
 
   return (
     <div className="flex items-center justify-between border-b border-surface-divider bg-surface-card px-6 py-4">
@@ -40,6 +47,13 @@ export function Navbar({ title, subtitle, userInitials }: NavbarProps) {
           }`}
         >
           Instructors
+        </button>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="rounded-lg border border-navy-200 bg-surface-card px-3 py-1.5 text-xs font-medium text-surface-muted transition-colors hover:bg-lemon-50 hover:text-navy-900"
+        >
+          Logout
         </button>
         <div className="flex h-9 w-9 items-center justify-center rounded-full border border-lemon-500 bg-lemon-50 text-sm font-medium text-lemon-700">
           {userInitials}

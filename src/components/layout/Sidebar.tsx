@@ -68,12 +68,12 @@ export function Sidebar({ role }: SidebarProps) {
     <aside className="flex h-full w-[210px] flex-shrink-0 flex-col bg-navy-900 px-3.5 py-5 shadow-[inset_-1px_0_0_rgba(197,202,222,0.18)]">
       <div className="mb-7 rounded-xl border border-navy-700 bg-navy-900 px-3 py-3 shadow-[0_10px_24px_rgba(27,35,64,0.28)]">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-lemon-500 text-[11px] font-black uppercase tracking-[0.18em] text-navy-900 shadow-sm">
-            CZ
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-surface-card shadow-sm ring-1 ring-white/10">
+            <img src="/Branalms.jpg" alt="Branalms logo" className="h-full w-full object-cover" />
           </div>
           <div className="min-w-0">
             <div className="text-[11px] font-semibold uppercase tracking-[0.28em] text-navy-50">
-              Cyber-Zeb
+              Brana
             </div>
             <div className="text-lg font-black uppercase leading-none tracking-[0.18em] text-lemon-500">
               LMS
