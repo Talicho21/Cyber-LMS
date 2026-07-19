@@ -37,7 +37,7 @@ export function RegisterPage() {
               <img src="/Branalms.jpg" alt="Branalms logo" className="h-full w-full object-cover" />
             </div>
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.32em] text-lemon-200/90">Cyber-Zeb LMS</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.32em] text-lemon-200/90">BRANA LMS</div>
               <div className="mt-1 text-2xl font-semibold tracking-tight">Create account</div>
             </div>
           </div>
